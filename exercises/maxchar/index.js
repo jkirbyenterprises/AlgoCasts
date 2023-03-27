@@ -7,11 +7,21 @@
 
 function maxChar(str) {
     const occurrences = {};
+    let max = 0;
+    let maxCharacter = '';
     for(const char of str) {
         occurrences[char] = occurrences[char] + 1 || 1;
     }
+
+    for(const char in occurrences) {
+        if(occurrences[char] > max) {
+            max = occurrences[char];
+            maxCharacter = char;
+        }
+    }
     
-    return Object.keys(occurrences).sort((a,b)=>(occurrences[b]-occurrences[a]))[0];
+    return maxCharacter;
+    
 }
 
 module.exports = maxChar;
@@ -37,3 +47,20 @@ module.exports = maxChar;
 // });
 
 // return Object.keys(occurrences).sort((a,b)=>(occurrences[b]-occurrences[a]))[0];
+
+//Grider solution (iterate should be faster than sort)
+// const occurrences = {};
+// let max = 0;
+// let maxCharacter = '';
+// for(const char of str) {
+//     occurrences[char] = occurrences[char] + 1 || 1;
+// }
+
+// for(const char in occurrences) {
+//     if(occurrences[char] > max) {
+//         max = occurrences[char];
+//         maxCharacter = char;
+//     }
+// }
+
+// return maxCharacter;
