@@ -17,7 +17,7 @@
 //       '### '
 //       '####'
 
-function steps(n) {
+function steps(n, row = 0, stair = '') {
     let suffix = ' '.repeat(n-1);
     // let suffix = new Array(n).join(' '); //more compatible
     let prefix = '#';
@@ -32,7 +32,7 @@ function steps(n) {
 // help from https://stackoverflow.com/questions/14343844/create-a-string-of-variable-length-filled-with-a-repeated-character
 // on filling a string with a character
 // let suffix = ' '.repeat(n-1);
-// let suffix = new Array(n).join(' '); //more compatible
+// // let suffix = new Array(n).join(' '); //more compatible
 // let prefix = '#';
 // for(let i = 0; i < n; i++) {
 //     console.log(prefix+suffix);
@@ -54,22 +54,24 @@ function steps(n) {
 // }
 
 // grider weird recursive solution
-// if(n === row) {
-//     return;
-// }
+// function steps(n, row = 0, stair = '') {
+//     if(n === row) {
+//         return;
+//     }
 
-// if(n === stair.length) {
-//     console.log(stair);
-//     steps(n, row+1);
-//     return;
-// }
+//     if(n === stair.length) {
+//         console.log(stair);
+//         steps(n, row+1);
+//         return;
+//     }
 
-// if(stair.length <= row) {
-//     stair += '#';
-// } else {
-//     stair += ' ';
+//     if(stair.length <= row) {
+//         stair += '#';
+//     } else {
+//         stair += ' ';
+//     }
+    
+//     steps(n, row, stair);
 // }
-
-// steps(n, row, stair);
 
 module.exports = steps;
