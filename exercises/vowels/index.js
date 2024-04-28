@@ -8,7 +8,7 @@
 //   vowels('Why?') --> 0
 
 function vowels(str) {
-    return str.match(/(a|e|i|o|u)/ig)?.length || 0;
+    return str.match(/[aeiou]/ig)?.length || 0;
 }
 
 //My initial lookup table solution
@@ -23,5 +23,6 @@ function vowels(str) {
 
 //regex solution
 // return str.match(/(a|e|i|o|u)/ig)?.length || 0;
+// return str.match(/[aeiou]/ig)?.length || 0;
 
 module.exports = vowels;
