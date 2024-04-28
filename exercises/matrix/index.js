@@ -37,13 +37,13 @@
 function matrix(n) {
     const location = { x: 0, y: 0 }
     let direction = { x: 1, y: 0}
-    let count = 0;
+    let step = 0;
     
-    //create the base arrays
-    const sprialMatrix = Array.from({length: n}, _=> new Array(n).fill(0));
+    // (better?) way to create the base arrays (from https://stackoverflow.com/questions/53992415/how-to-fill-multidimensional-array-in-javascript)
+    const spiralMatrix = Array.from({length: n}, _=> new Array(n).fill(0));
 
-    while(++count < (n*n) + 1) {
-        sprialMatrix[location.y][location.x] = count;
+    while(++step < (n*n) + 1) {
+        spiralMatrix[location.y][location.x] = step;
 
         // rotate 90 degrees if go outside array bounds or hit a non-zero value
         const nextLocation = {
@@ -51,7 +51,7 @@ function matrix(n) {
             y: location.y - direction.y
         }
 
-        if(nextLocation.x >= n || nextLocation.x < 0 || nextLocation.y >= n || nextLocation.y < 0 || sprialMatrix[nextLocation.y][nextLocation.x] != 0) {
+        if(nextLocation.x >= n || nextLocation.x < 0 || nextLocation.y >= n || nextLocation.y < 0 || spiralMatrix[nextLocation.y][nextLocation.x] != 0) {
             direction = {
                 x: direction.y,
                 y: -direction.x
@@ -62,7 +62,7 @@ function matrix(n) {
         location.y -= direction.y;
     }
 
-    return sprialMatrix;
+    return spiralMatrix;
 }
 
 // Cleaned up less-crappy solution
