@@ -18,11 +18,13 @@ class Queue {
   }
 
   peek() {
-    const index = this.data.length-1;
-    if(this.data.length == 0 || index < 0 || index > this.data.length) {
-      return null;
-    }
-    return this.data[index];
+    return this.data[this.data.length -1];
+    // bounds check
+    // const index = this.data.length-1;
+    // if(this.data.length == 0 || index < 0 || index > this.data.length) {
+    //   return null;
+    // }
+    // return this.data[index];
   }
 }
 
