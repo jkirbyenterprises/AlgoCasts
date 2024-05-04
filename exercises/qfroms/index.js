@@ -14,6 +14,66 @@
 
 const Stack = require('./stack');
 
-class Queue {}
+class Queue {
+    constructor() {
+        this.theStack = (new Stack());
+        this.sortedStack = new Stack();
+    }    
+    add(value) {
+        this.theStack.push(value);
+    }
+    remove() {
+        while(this.theStack.peek() !== undefined) {
+            this.sortedStack.push(this.theStack.pop());
+        }
+        let value = this.sortedStack.pop();
+        while(this.sortedStack.peek() !== undefined) {
+            this.theStack.push(this.sortedStack.pop());
+        }
+        return value;
+    }
+    peek() {
+        while(this.theStack.peek() !== undefined) {
+            this.sortedStack.push(this.theStack.pop());
+        }
+        let peekValue = this.sortedStack.peek();
+        while(this.sortedStack.peek() !== undefined) {
+            this.theStack.push(this.sortedStack.pop());
+        }
+        return peekValue;
+    }
+}
+
+// My first solution
+// class Queue {
+//     constructor() {
+//         this.theStack = (new Stack());
+//     }    
+//     add(value) {
+//         this.theStack.push(value);
+//     }
+//     remove() {
+//         const sortedStack = new Stack();
+//         while(this.theStack.peek() !== undefined) {
+//             sortedStack.push(this.theStack.pop());
+//         }
+//         let value = sortedStack.pop();
+//         while(sortedStack.peek() !== undefined) {
+//             this.theStack.push(sortedStack.pop());
+//         }
+//         return value;
+//     }
+//     peek() {
+//         const sortedStack = new Stack();
+//         while(this.theStack.peek() !== undefined) {
+//             sortedStack.push(this.theStack.pop());
+//         }
+//         let peekValue = sortedStack.peek();
+//         while(sortedStack.peek() !== undefined) {
+//             this.theStack.push(sortedStack.pop());
+//         }
+//         return peekValue;
+//     }
+// }
 
 module.exports = Queue;
