@@ -139,7 +139,6 @@ class LinkedList {
 
         let newNode = new Node(nodeValue, node);
         prevNode.next = newNode;
-        // node.next = newNode;
     }
     forEach(execFunction) {
         let node = this.head;
@@ -160,14 +159,15 @@ class LinkedList {
     //     return {
     //         next() {
                 
-    //             if(node === null) {
-    //                 return {done: true };
+    //             if(node !== null) {
+    //                 node = node.next;
     //             }
 
-    //             let done = (node.next !== null) ? false : true;
-    //             node = node.next;
-    //             let value = node;
-    //             return {done, value };
+    //             if(node === null) {
+    //                 return {done: true}
+    //             } else {
+    //                 return {done: false, value: node}
+    //             }
     //         },
     //         return() {
     //             return {done: true };
