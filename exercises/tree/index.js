@@ -11,15 +11,15 @@
 // function that gets called with each element in the tree
 
 class Node {
-    constructor(data) {
-        this.data = data;
+    constructor(value) {
+        this.data = value;
         this.children = [];
     }
-    add(data) {
-        this.children.push(new Node(data));
+    add(value) {
+        this.children.push(new Node(value));
     }
-    remove(data) {
-        this.children = this.children.filter(value => value.data !== data);
+    remove(value) {
+        this.children = this.children.filter((node) => node.data !== value);
     }
 }
 
@@ -27,6 +27,56 @@ class Tree {
     constructor() {
         this.root = null;
     }
+    traverseBF(callback) {
+        const arr = [this.root];
+        while(arr.length) {
+            const node = arr.shift();
+            arr.push(...node.children);
+
+            callback(node);
+        }
+    }
+    traverseDF(callback) {
+        const arr = [this.root];
+        while(arr.length) {
+            const node = arr.shift();
+            arr.unshift(...node.children);
+
+            callback(node);
+        }
+    }
 }
+
+// My initial solution
+// class Tree {
+//     constructor() {
+//         this.root = null;
+//     }
+//     traverseBF(callback, rootNode = this.root) {
+        
+//         if(rootNode === this.root) {
+//             callback(rootNode);
+//         }
+        
+//         rootNode.children.forEach(node => {
+//             callback(node);
+//         });
+        
+//         rootNode.children.forEach(node => {
+//             this.traverseBF(callback, node);
+//         });
+//     }
+//     traverseDF(callback, rootNode = this.root) {
+        
+//         if(rootNode === this.root) {
+//             callback(rootNode);
+//         }
+        
+//         rootNode.children.forEach(node => {
+//             callback(node);
+//             this.traverseBF(callback, node);
+//         });
+//     }
+// }
 
 module.exports = { Tree, Node };
